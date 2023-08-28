@@ -1,0 +1,14 @@
+a:hover{
+    text-decoration: none;
+}
+h1{
+    color: blue;
+}
+h2{
+    color: red;
+}
+.nav-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
