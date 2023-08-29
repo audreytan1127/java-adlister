@@ -59,14 +59,10 @@
 <input id="pepperoni" type="checkbox" name="toppings" value="Pepperoni">
 <label for="bacon">Bacon</label>
 <input id="bacon" type="checkbox" name="toppings" value="Bacon">
-<label for="ground-beef">Ground Beef</label>
-<input id="ground-beef" type="checkbox" name="toppings" value="Ground-Beef">
 <label for="chicken">Chicken</label>
 <input id="chicken" type="checkbox" name="toppings" value="chicken">
 <label for="onions">Onions</label>
 <input id="onions" type="checkbox" name="toppings" value="Onions">
-<label for="peppers">Peppers</label>
-<input id="peppers" type="checkbox" name="toppings" value="Peppers">
 <label for="jalapenos">Jalapenos</label>
 <input id="jalapenos" type="checkbox" name="toppings" value="jalapenos">
 <label for="pineapple">Pineapple</label>
