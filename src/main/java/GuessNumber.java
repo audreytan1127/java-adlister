@@ -20,11 +20,11 @@ public class GuessNumber extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userGuess = req.getParameter("guess");
         if(Integer.parseInt(userGuess) == random){
-        resp.sendRedirect("correct-guess.jsp");
+        resp.sendRedirect("/correct");
         } else if(Integer.parseInt(userGuess) < 0 || Integer.parseInt(userGuess) > 3) {
-           resp.sendRedirect("guess-num.jsp");
+           req.getRequestDispatcher("guess-num.jsp").forward(req, resp);
         } else {
-            resp.sendRedirect("incorrect-guess.jsp");
+            resp.sendRedirect("/incorrect");
         }
     }
 }

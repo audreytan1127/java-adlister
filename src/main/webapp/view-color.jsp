@@ -2,8 +2,12 @@
 <html>
 <head>
     <title>Color Change</title>
+    <style>
+        body {
+            background-color: ${backgroundColor};
+        }
+    </style>
 </head>
-<body id="background-color" style="background-color: ${requestScope.color}">
 <h1>Background color has changed!</h1>
 
 </body>
