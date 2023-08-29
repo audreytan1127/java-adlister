@@ -9,6 +9,14 @@ import java.io.IOException;
 public class IncorrectNumber extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("incorrect-guess.jsp").forward(req, resp);
+        int randomNum = Integer.parseInt(req.getParameter("random"));
+        int userGuess = Integer.parseInt(req.getParameter("userGuess"));
+        req.setAttribute("message", "You Lose! You guessed " + userGuess + " and the number was " + randomNum);
+        req.getRequestDispatcher("guess-number-outcome.jsp").forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
     }
 }

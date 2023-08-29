@@ -8,8 +8,7 @@ import java.util.Random;
 
 @WebServlet("/guess")
 public class GuessNumber extends HttpServlet {
-    Random randomNumber = new Random();
-    int random = randomNumber.nextInt(3);
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -18,13 +17,17 @@ public class GuessNumber extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userGuess = req.getParameter("guess");
-        if(Integer.parseInt(userGuess) == random){
-        resp.sendRedirect("/correct");
-        } else if(Integer.parseInt(userGuess) < 0 || Integer.parseInt(userGuess) > 3) {
-           req.getRequestDispatcher("guess-num.jsp").forward(req, resp);
+        int userGuess = Integer.parseInt(req.getParameter("guess"));
+
+        Random randomNumber = new Random();
+        int random = randomNumber.nextInt(3) + 1;
+
+        if(userGuess == random){
+        resp.sendRedirect("/correct?random=" + random + "&userGuess=" + userGuess);
+        } else if(userGuess < 1 || userGuess > 3) {
+           req.getRequestDispatcher("guess-number-outcome.jsp").forward(req, resp);
         } else {
-            resp.sendRedirect("/incorrect");
+            resp.sendRedirect("/incorrect?random=" + random + "&userGuess=" + userGuess);
         }
     }
 }
