@@ -20,23 +20,17 @@ public class PizzaOrder extends HttpServlet {
 
         String name = req.getParameter("username");
         String address = req.getParameter("address");
+        String deliveryOrPickup = req.getParameter("deliver-pickup");
         String size = req.getParameter("size");
-        String sauce = req.getParameter("sauce");
-        String[] toppings = {req.getParameter("toppings")};
+        String sauce = req.getParameter("sauce-amount");
+        String[] toppings = req.getParameterValues("toppings");
 
-        System.out.println(name);
-        System.out.println(address);
-        System.out.println(size);
-        System.out.println(sauce);
-        for(String topping:toppings){
-        System.out.println(topping);
-        }
-
-        req.setAttribute(name, "name");
-        req.setAttribute(address, "address");
-        req.setAttribute(size, "size");
-        req.setAttribute(sauce, "sauce");
-        req.setAttribute(Arrays.toString(toppings), "toppings");
+        System.out.printf("Customer name: %s%n",name);
+        System.out.printf("Customer Address: %s%n", address);
+        System.out.println(deliveryOrPickup + "\n");
+        System.out.printf("Size of Pizza: %s%n", size);
+        System.out.printf("Sauce: %s%n", sauce);
+        System.out.printf("Toppings: %s%n", Arrays.toString(toppings));
 
     }
 
