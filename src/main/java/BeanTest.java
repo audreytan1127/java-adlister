@@ -1,3 +1,7 @@
+import models.Album;
+import models.Author;
+import models.Quote;
+
 import java.util.ArrayList;
 import java.util.List;
 

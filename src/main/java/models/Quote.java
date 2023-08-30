@@ -1,3 +1,7 @@
+package models;
+
+import models.Author;
+
 public class Quote {
 
     private long id;
