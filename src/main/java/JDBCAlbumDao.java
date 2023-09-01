@@ -1,15 +1,13 @@
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
-public class JSBCAlbumDao {
+public class JDBCAlbumDao {
 
     private Connection connection;
 
 
-    public JSBCAlbumDao() {
+    public JDBCAlbumDao() {
         try {
             DriverManager.registerDriver(new Driver());
             this.connection = DriverManager.getConnection(
@@ -48,11 +46,7 @@ public class JSBCAlbumDao {
         try {
             Statement statement = connection.createStatement();
             String deleteQuery = String.format("DELETE FROM albums WHERE name = '%s'", albumName);
-            statement.executeUpdate(deleteQuery, Statement.RETURN_GENERATED_KEYS);
-            ResultSet rs = statement.getGeneratedKeys();
-            if (rs.next()) {
-                lastInsertedId = rs.getInt(3);
-            }
+            statement.executeUpdate(deleteQuery);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -60,7 +54,9 @@ public class JSBCAlbumDao {
     }
 
     public static void main(String[] args) {
-        JSBCAlbumDao albumDao = new JSBCAlbumDao();
+        JDBCAlbumDao albumDao = new JDBCAlbumDao();
+
+//       // for insert album function
 //        Album album = new Album(
 //                "Kendrick Lamar",
 //                "To Pimp a Butterfly",
@@ -69,6 +65,9 @@ public class JSBCAlbumDao {
 //                "Hip hop");
 //        int lastInsertedId = albumDao.insertAlbum(album);
 //        System.out.println("Added a new album with an id of..." + lastInsertedId);
+
+
+//       // for delete function
         albumDao.deleteAlbum("Bad");
     }
 }
